@@ -1,0 +1,12 @@
+server:
+  port: 8701
+  
+news:
+  top:
+    defaultSize: 10
+
+spring:
+  jackson:
+    serialization: 
+      indent-output: true
+
