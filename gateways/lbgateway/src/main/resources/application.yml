@@ -1,0 +1,18 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: articles-service
+        uri: lb://articles-service
+        predicates:
+        - Path=/articles/{id}
+      - id: news-service
+        uri: lb://news-service
+        predicates:
+        - Path=/news

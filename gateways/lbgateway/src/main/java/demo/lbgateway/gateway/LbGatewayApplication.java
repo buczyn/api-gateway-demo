@@ -1,12 +1,12 @@
-package demo.proxygateway.gateway;
+package demo.lbgateway.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GatewayApplication {
+public class LbGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
+		SpringApplication.run(LbGatewayApplication.class, args);
 	}
 }
