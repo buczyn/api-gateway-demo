@@ -2,6 +2,7 @@ package demo.news.endpoints;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,9 +31,10 @@ public class NewsController {
 	}
 
 	private NewsList generateTopNews(int size) {
-		List<News> newsList = new ArrayList<News>();
+		List<News> newsList = new ArrayList<>();
+		Random random = new Random();
 		for (int i = 1; i <= size; i++) {
-			Article article = articlesClient.getArticle(Integer.toString(i));
+			Article article = articlesClient.getArticle(Integer.toString(random.nextInt(100)));
 			newsList.add(new News(article.getTitle(), article.getText()));
 		}
 		return new NewsList(newsList);
