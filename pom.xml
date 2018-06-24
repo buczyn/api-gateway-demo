@@ -45,6 +45,7 @@
 	</dependencyManagement>
 
 	<modules>
+		<module>gateways</module>
 		<module>infrastructure</module>
 		<module>services</module>
 	</modules>

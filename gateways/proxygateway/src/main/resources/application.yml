@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: articles-service
+        uri: http://localhost:8700
+        predicates:
+        - Path=/articles/{id}
+      - id: news-service
+        uri: http://localhost:8701
+        predicates:
+        - Path=/news
