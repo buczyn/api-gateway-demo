@@ -3,6 +3,8 @@ package demo.news.endpoints;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,12 +32,24 @@ public class NewsController {
 
 	}
 
+	@RequestMapping(path = "/news/v2", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<String> getTopNewsV2(@RequestParam(name = "size", required = false) Integer size) {
+		return generateTopNewsIds(size == null ? defaultSize : size);
+	}
+
+	private List<String> generateTopNewsIds(int size) {
+		Random random = new Random();
+		return IntStream.range(0, size)
+				.map(i -> random.nextInt(100))
+				.mapToObj(Integer::toString)
+				.collect(Collectors.toList());
+	}
+
 	private NewsList generateTopNews(int size) {
 		List<News> newsList = new ArrayList<>();
-		Random random = new Random();
-		for (int i = 1; i <= size; i++) {
-			Article article = articlesClient.getArticle(Integer.toString(random.nextInt(100)));
-			newsList.add(new News(article.getTitle(), article.getText()));
+		for (String id: generateTopNewsIds(size)) {
+			Article article = articlesClient.getArticle(id);
+			newsList.add(new News(article.getId(), article.getTitle(), article.getText()));
 		}
 		return new NewsList(newsList);
 	}
