@@ -3,6 +3,7 @@ package demo.articles.endpoints;
 import java.util.Date;
 import java.util.Random;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
 
 @RestController
+@Slf4j
 public class ArticlesController {
 
 	private static final int LAST_3_MONTH_HOURS = 3 * 30 * 24;
@@ -33,11 +35,10 @@ public class ArticlesController {
 
 	@RequestMapping(path = "/articles/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Article getArticle(@PathVariable String id) {
-		String title = lorem.getTitle(titleLength);
-		String text = lorem.getParagraphs(paragraphsMin, paragraphsMax);
-		Author author = new Author(lorem.getFirstName(), lorem.getLastName());
-		return new Article(id, title, text, author, randomDate());
-
+        String title = lorem.getTitle(titleLength);
+        String text = lorem.getParagraphs(paragraphsMin, paragraphsMax);
+        Author author = new Author(lorem.getFirstName(), lorem.getLastName());
+        return new Article(id, title, text, author, randomDate());
 	}
 
 	private Date randomDate() {

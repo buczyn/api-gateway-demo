@@ -19,6 +19,7 @@
 	<modules>
 		<module>proxygateway</module>
 		<module>lbgateway</module>
+		<module>aggrgateway</module>
 	</modules>
 
 </project>

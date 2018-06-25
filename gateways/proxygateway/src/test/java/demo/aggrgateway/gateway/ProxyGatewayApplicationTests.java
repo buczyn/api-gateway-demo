@@ -1,4 +1,4 @@
-package demo.lbgateway.gateway;
+package demo.aggrgateway.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
