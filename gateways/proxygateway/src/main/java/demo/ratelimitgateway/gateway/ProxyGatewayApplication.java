@@ -1,12 +1,12 @@
-package demo.aggrgateway.gateway;
+package demo.ratelimitgateway.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AggrGatewayApplication {
+public class ProxyGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AggrGatewayApplication.class, args);
+		SpringApplication.run(ProxyGatewayApplication.class, args);
 	}
 }

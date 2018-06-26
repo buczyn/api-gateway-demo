@@ -1,4 +1,4 @@
-package demo.aggrgateway.gateway.news;
+package demo.ratelimitgateway.gateway.news;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,7 +51,7 @@ class ArticlesService {
     }
 
     Flux<Article> getArticles(Collection<String> ids) {
-        return Flux.merge(ids.stream().map(this::getArticle).toArray(size -> new Mono[size]));
+        return Flux.merge(ids.stream().map(this::getArticle).toArray(Mono[]::new));
     }
 
     private Mono<Article> getArticle(String id) {

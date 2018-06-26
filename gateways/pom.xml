@@ -20,6 +20,7 @@
 		<module>proxygateway</module>
 		<module>lbgateway</module>
 		<module>aggrgateway</module>
+		<module>ratelimitgateway</module>
 	</modules>
 
 </project>

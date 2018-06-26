@@ -1,0 +1,24 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: articles-service
+        uri: lb://articles-service
+        predicates:
+        - Path=/articles/{id}
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 1
+            redis-rate-limiter.burstCapacity: 1
+            key-resolver: "#{@articlesKeyResolver}"
+      - id: news-service
+        uri: lb://news-service
+        predicates:
+        - Path=/news
