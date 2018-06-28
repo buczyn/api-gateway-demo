@@ -1,6 +1,11 @@
 server:
   port: 8700
 
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+
 articles:
   random:
     title: 5

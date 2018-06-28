@@ -1,5 +1,10 @@
 server:
   port: 8701
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
   
 news:
   top:
